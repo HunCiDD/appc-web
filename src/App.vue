@@ -1,6 +1,6 @@
 <template>
   <main>
-    <RouterView/>
+    <RouterView />
   </main>
 </template>
 
@@ -12,3 +12,4 @@ body,
   margin: 0;
 }
 </style>
+<script setup lang="ts"></script>

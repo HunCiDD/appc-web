@@ -1,4 +1,11 @@
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useTokenStore } from '@/stores/token'
+import type { UserGet } from '@/apps/appc_auth/types'
+import { useUserStore } from '@/apps/appc_auth/stores/user'
+
+const router = useRouter()
+const tokenStore = useTokenStore()
+const userStore = useUserStore()
 const props = defineProps({
   isCollapse: {
     type: Boolean,
@@ -8,14 +15,29 @@ const props = defineProps({
     type: Function,
   },
 })
+
+let userInfo = reactive({
+  id: userStore.id,
+  username: userStore.username,
+  nickname: userStore.nickname,
+  phone: userStore.phone,
+  email: userStore.email,
+  avatar: '',
+})
+
+const onLogout = async () => {
+  userStore.clear()
+  tokenStore.clear()
+  await router.push({ path: '/login' })
+}
 </script>
 
 <template>
   <el-header>
     <!-- 收缩图标 -->
     <el-icon @click="toggleCollapse">
-      <IEpExpand v-show="isCollapse"/>
-      <IEpFold v-show="!isCollapse"/>
+      <IEpExpand v-show="isCollapse" />
+      <IEpFold v-show="!isCollapse" />
     </el-icon>
 
     <!-- 面包屑 -->
@@ -35,15 +57,19 @@ const props = defineProps({
         :src="'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'"
       />
       <span class="el-dropdown-link">
-        Dropdown List
         <el-icon class="el-icon--right">
-          <arrow-down/>
+          <IEpArrowDown />
         </el-icon>
       </span>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item>用户信息</el-dropdown-item>
-          <el-dropdown-item divided>退出登录</el-dropdown-item>
+          <el-dropdown-item>
+            <span>{{ userInfo.nickname }}</span>
+            <span>({{ userInfo.username }})</span>
+          </el-dropdown-item>
+          <el-dropdown-item>{{ userInfo.phone }}</el-dropdown-item>
+          <el-dropdown-item>{{ userInfo.email }}</el-dropdown-item>
+          <el-dropdown-item divided @click="onLogout">退出登录</el-dropdown-item>
         </el-dropdown-menu>
       </template>
     </el-dropdown>

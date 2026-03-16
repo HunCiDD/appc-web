@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import {useTokenStore} from '@/apps/appc_auth/stores/token.ts'
+import { useTokenStore } from '@/stores/token'
 
 import AppAside from './AppAside.vue'
 import AppHeader from './AppHeader.vue'
@@ -25,7 +25,7 @@ if (!tokenStore.isAuthenticated) {
         <AppHeader :isCollapse="isCollapse" :toggleCollapse="toggleCollapse"></AppHeader>
         <el-scrollbar>
           <el-main>
-            <RouterView/>
+            <RouterView />
           </el-main>
         </el-scrollbar>
         <el-footer>Footer</el-footer>

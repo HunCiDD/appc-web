@@ -1,5 +1,5 @@
-import {createRouter, createWebHistory} from 'vue-router'
-import {useTokenStore} from '@/apps/appc_auth/stores/token'
+import { createRouter, createWebHistory } from 'vue-router'
+import { useTokenStore } from '@/stores/token'
 
 const routes = [
   {
@@ -10,42 +10,27 @@ const routes = [
     path: '/home',
     name: 'home',
     component: () => import('@/components/layout/AppLayout.vue'),
-    meta: {requiresAuth: true},
+    meta: { requiresAuth: true },
     children: [
       {
-        path: '/auth/admin/users',
-        name: 'user-admin',
+        path: '/auth/users/admin',
+        name: 'UserAdmin',
         component: () => import('@/apps/appc_auth/views/UserAdmin.vue'),
       },
       {
-        path: '/auth/admin/roles',
-        name: 'role-admin',
+        path: '/auth/roles/admin',
+        name: 'RoleAdmin',
         component: () => import('@/apps/appc_auth/views/RoleAdmin.vue'),
       },
       {
-        path: '/auth/admin/resource',
-        name: 'resource-admin',
+        path: '/auth/resource/admin',
+        name: 'ResourceAdmin',
         component: () => import('@/apps/appc_auth/views/ResourceAdmin.vue'),
       },
       {
-        path: '/daily-tracker/time-spend',
-        name: 'time-spend',
-        component: () => import('@/apps/appx_tracker/views/TimeSpend.vue'),
-      },
-      {
-        path: '/daily-tracker/action/data',
-        name: 'action-data',
-        component: () => import('@/apps/appx_tracker/views/ActionData.vue'),
-      },
-      {
-        path: '/daily-tracker/thing/data',
-        name: 'thing-data',
-        component: () => import('@/apps/appx_tracker/views/ThingData.vue'),
-      },
-      {
-        path: '/daily-tracker/tag/data',
-        name: 'tag-data',
-        component: () => import('@/apps/appx_tracker/views/TagData.vue'),
+        path: '/tracker/action/admin',
+        name: 'ActionAdmin',
+        component: () => import('@/apps/appx_tracker/views/ActionAdmin.vue'),
       },
     ],
   },
@@ -86,7 +71,7 @@ router.beforeEach((to, from, next) => {
     // 需要认证的路由
     if (!isAuthenticated) {
       // 未认证，重定向到登录页面
-      next({name: 'login', query: {redirect: to.fullPath}})
+      next({ name: 'login', query: { redirect: to.fullPath } })
       return
     }
   }

@@ -19,25 +19,25 @@ const props = defineProps({
         <el-sub-menu index="1">
           <template #title>
             <el-icon>
-              <IEpTools/>
+              <IEpTools />
             </el-icon>
             <span> 权限管理 </span>
           </template>
-          <el-menu-item index="/auth/admin/users">
+          <el-menu-item index="/auth/users/admin">
             <el-icon>
-              <IEpUserFilled/>
+              <IEpUserFilled />
             </el-icon>
             <span> 用户管理 </span>
           </el-menu-item>
-          <el-menu-item index="/auth/admin/roles">
+          <el-menu-item index="/auth/roles/admin">
             <el-icon>
-              <IEpAvatar/>
+              <IEpAvatar />
             </el-icon>
             <span> 角色管理 </span>
           </el-menu-item>
-          <el-menu-item index="/auth/admin/resource">
+          <el-menu-item index="/auth/resource/admin">
             <el-icon>
-              <IEpMenu/>
+              <IEpMenu />
             </el-icon>
             <span> 资源管理 </span>
           </el-menu-item>
@@ -46,13 +46,13 @@ const props = defineProps({
         <el-sub-menu index="2">
           <template #title>
             <el-icon>
-              <IEpSetting/>
+              <IEpSetting />
             </el-icon>
             <span> 系统管理 </span>
           </template>
-          <el-menu-item index="/auth/admin/users">
+          <el-menu-item index="/auth/users/admin">
             <el-icon>
-              <IEpSetting/>
+              <IEpSetting />
             </el-icon>
             <span> 配置管理 </span>
           </el-menu-item>
@@ -61,70 +61,76 @@ const props = defineProps({
         <el-sub-menu index="3">
           <template #title>
             <el-icon>
-              <IEpSetting/>
+              <IEpSetting />
             </el-icon>
             <span> 日常跟踪 </span>
           </template>
           <el-menu-item index="/daily-tracker/dashboard">
             <el-icon>
-              <IEpSetting/>
+              <IEpSetting />
             </el-icon>
             <span> 数据大盘 </span>
           </el-menu-item>
           <el-menu-item index="/daily-tracker/time-spend">
             <el-icon>
-              <IEpSetting/>
+              <IEpSetting />
             </el-icon>
             <span> 时间花费 </span>
           </el-menu-item>
           <el-menu-item index="/daily-tracker/dashboard">
             <el-icon>
-              <IEpSetting/>
+              <IEpSetting />
             </el-icon>
             <span> 计划安排 </span>
           </el-menu-item>
           <el-menu-item index="/daily-tracker/action/data">
             <el-icon>
-              <IEpSetting/>
+              <IEpSetting />
             </el-icon>
             <span> 行为数据 </span>
           </el-menu-item>
           <el-menu-item index="/daily-tracker/thing/data">
             <el-icon>
-              <IEpSetting/>
+              <IEpSetting />
             </el-icon>
             <span> 事情数据 </span>
           </el-menu-item>
           <el-menu-item index="/daily-tracker/tag/data">
             <el-icon>
-              <IEpSetting/>
+              <IEpSetting />
             </el-icon>
             <span> 标签数据 </span>
+          </el-menu-item>
+          <el-menu-item index="/tracker/action/admin">
+            <el-icon>
+              <IEpSetting />
+            </el-icon>
+            <span> 行动管理 </span>
           </el-menu-item>
         </el-sub-menu>
 
         <el-sub-menu index="4">
           <template #title>
             <el-icon>
-              <IEpSetting/>
+              <IEpSetting />
             </el-icon>
             <span> 组件实例 </span>
           </template>
           <el-menu-item index="/example/button">
             <el-icon>
-              <IEpSetting/>
+              <IEpSetting />
             </el-icon>
             <span> Button </span>
           </el-menu-item>
           <el-menu-item index="/example/input">
             <el-icon>
-              <IEpSetting/>
+              <IEpSetting />
             </el-icon>
             <span> Input </span>
           </el-menu-item>
           <el-menu-item index="/example/select">
             <el-icon>
-              <IEpSetting/>
+              <IEpSetting />
             </el-icon>
             <span> Select </span>
           </el-menu-item>

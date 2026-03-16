@@ -50,17 +50,15 @@ const tableData = [
     <h1>xx</h1>
 
     <el-table :data="tableData" style="width: 100%">
-      <el-table-column fixed label="Date" prop="date" width="150"/>
-      <el-table-column label="Name" prop="name" width="120"/>
-      <el-table-column label="State" prop="state" width="120"/>
-      <el-table-column label="City" prop="city" width="120"/>
-      <el-table-column label="Address" prop="address" width="600"/>
-      <el-table-column label="Zip" prop="zip" width="120"/>
+      <el-table-column fixed label="Date" prop="date" width="150" />
+      <el-table-column label="Name" prop="name" width="120" />
+      <el-table-column label="State" prop="state" width="120" />
+      <el-table-column label="City" prop="city" width="120" />
+      <el-table-column label="Address" prop="address" width="600" />
+      <el-table-column label="Zip" prop="zip" width="120" />
       <el-table-column fixed="right" label="Operations" min-width="120">
         <template #default>
-          <el-button link size="small" type="primary" @click="handleClick">
-            Detail
-          </el-button>
+          <el-button link size="small" type="primary" @click="handleClick"> Detail </el-button>
           <el-button link size="small" type="primary">Edit</el-button>
         </template>
       </el-table-column>

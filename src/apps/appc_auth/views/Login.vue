@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import AccountLoginForm from '@/apps/appc-auth/components/AccountLoginForm.vue'
-import PhoneLoginForm from '@/apps/appc-auth/components/PhoneLoginForm.vue'
+import AccountLoginForm from '@/apps/appc_auth/components/AccountLoginForm.vue'
+import PhoneLoginForm from '@/apps/appc_auth/components/PhoneLoginForm.vue'
 
 // 定义登录类型，默认为账号登录
 const loginType = ref<string>('account')

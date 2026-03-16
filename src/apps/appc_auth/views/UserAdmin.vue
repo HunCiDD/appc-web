@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import {home} from '@/apps/appc-auth/apis/index'
+import {home} from '@/apps/appc_auth/apis/index'
 import type {ApiResponse} from '@/apis/types'
 
 const data = ref<string>('UserAdmin')

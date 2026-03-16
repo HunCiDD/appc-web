@@ -6,7 +6,7 @@ import type {
   Token,
   UserInfo,
   UserLoginForm,
-} from '@/apps/appc-auth/types'
+} from '@/apps/appc_auth/types'
 
 enum API {
   LOGIN_USER_URL = '/auth/login',

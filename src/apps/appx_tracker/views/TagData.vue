@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import {CirclePlus, Delete, Edit, Postcard, Refresh, Search} from '@element-plus/icons-vue'
-import type {Tag} from '@/apps/appx-tracker/types'
-import {tagApi} from '@/apps/appx-tracker/apis'
-import {ElMessage, ElMessageBox, type FormInstance, type FormRules} from 'element-plus'
+import { CirclePlus, Delete, Edit, Postcard, Refresh, Search } from '@element-plus/icons-vue'
+import type { Tag } from '@/apps/appx_tracker/types'
+import { tagApi } from '@/apps/appx_tracker/apis'
+import { ElMessage, ElMessageBox, type FormInstance, type FormRules } from 'element-plus'
 
 // 响应式数据
 const queryFormData = reactive({
@@ -22,11 +22,10 @@ const paginationData = reactive({
   total: 0,
 })
 
-
 const formRules: FormRules = {
   name: [
-    {required: true, message: '请输入标签名称', trigger: 'blur'},
-    {min: 1, max: 32, message: '长度在 1 到 32 个字符', trigger: 'blur'},
+    { required: true, message: '请输入标签名称', trigger: 'blur' },
+    { min: 1, max: 32, message: '长度在 1 到 32 个字符', trigger: 'blur' },
   ],
 }
 // 表单相关
@@ -35,7 +34,6 @@ const addFormData = reactive({
   name: '',
 })
 const setFormRef = ref<FormInstance>()
-
 
 const setFormData = reactive({
   id: '',
@@ -90,7 +88,7 @@ const paginatedData = computed(() => {
 // 搜索功能
 const onQuery = () => {
   console.log('onQuery!')
-  filteredTableData.value = tableData.value.filter(tag => {
+  filteredTableData.value = tableData.value.filter((tag) => {
     const idMatch = !queryFormData.id || tag.id.toString().includes(queryFormData.id)
     const nameMatch = !queryFormData.name || tag.name.includes(queryFormData.name)
     return idMatch && nameMatch
@@ -114,7 +112,7 @@ const onAdd = async () => {
     await addFormRef.value?.validate()
     isLoading.value = true
 
-    await tagApi.add({name: addFormData.name})
+    await tagApi.add({ name: addFormData.name })
     ElMessage.success('添加成功')
     dialogVisibleAdd.value = false
     addFormData.name = ''
@@ -159,7 +157,7 @@ const onSet = async () => {
     await setFormRef.value?.validate()
     isLoading.value = true
 
-    await tagApi.set(setFormData.id, {id: setFormData.id, name: setFormData.name})
+    await tagApi.set(setFormData.id, { id: setFormData.id, name: setFormData.name })
     ElMessage.success('更新成功')
     dialogVisibleSet.value = false
 
@@ -179,15 +177,11 @@ const onSet = async () => {
 const onDel = async (row: Tag) => {
   console.log('onDel!')
   try {
-    await ElMessageBox.confirm(
-      `确定要删除标签 "${row.name}" 吗？`,
-      '删除确认',
-      {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning',
-      }
-    )
+    await ElMessageBox.confirm(`确定要删除标签 "${row.name}" 吗？`, '删除确认', {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning',
+    })
 
     await tagApi.del(row.id)
     ElMessage.success('删除成功')
@@ -211,7 +205,7 @@ const onBatchDel = async () => {
   }
 
   try {
-    const tagNames = multipleSelection.value.map(tag => tag.name).join('、')
+    const tagNames = multipleSelection.value.map((tag) => tag.name).join('、')
     await ElMessageBox.confirm(
       `确定要删除选中的 ${multipleSelection.value.length} 个标签吗？\n${tagNames}`,
       '批量删除确认',
@@ -249,7 +243,7 @@ const handleSelectionChange = (val: Tag[]) => {
     <el-col :span="24">
       <span>事件管理</span>
     </el-col>
-    <el-divider/>
+    <el-divider />
 
     <!-- 搜索条件 -->
     <el-col :span="24">
@@ -260,7 +254,7 @@ const handleSelectionChange = (val: Tag[]) => {
               v-model="queryFormData.id"
               clearable
               placeholder="输入ID"
-              style="width: 120px;"
+              style="width: 120px"
             />
           </el-form-item>
           <el-form-item label="标签名称" label-position="left">
@@ -272,18 +266,14 @@ const handleSelectionChange = (val: Tag[]) => {
             />
           </el-form-item>
           <el-form-item>
-            <el-button :icon="Search" type="primary" @click="onQuery">
-              查询
-            </el-button>
-            <el-button :icon="Refresh" @click="onResetQuery">
-              重置
-            </el-button>
+            <el-button :icon="Search" type="primary" @click="onQuery"> 查询 </el-button>
+            <el-button :icon="Refresh" @click="onResetQuery"> 重置 </el-button>
           </el-form-item>
         </el-form>
       </div>
     </el-col>
 
-    <el-divider/>
+    <el-divider />
     <!-- 操作按钮 -->
     <el-col :span="24">
       <div class="add">
@@ -314,10 +304,10 @@ const handleSelectionChange = (val: Tag[]) => {
           style="width: 100%"
           @selection-change="handleSelectionChange"
         >
-          <el-table-column type="selection" width="55"/>
-          <el-table-column label="ID" prop="id" width="80"/>
-          <el-table-column label="标签名称" min-width="150" prop="name"/>
-          <el-table-column fixed="right" label="操作" width="180">
+          <el-table-column type="selection" width="55" />
+          <el-table-column label="ID" prop="id" width="80" />
+          <el-table-column label="标签名称" min-width="150" prop="name" />
+          <el-table-column fixed="right" label="操作">
             <template #default="scope">
               <el-button :icon="Postcard" type="success" @click="onDialogVisibleDetail(scope.row)">
                 详情
@@ -325,9 +315,7 @@ const handleSelectionChange = (val: Tag[]) => {
               <el-button :icon="Edit" type="primary" @click="onDialogVisibleSet(scope.row)">
                 编辑
               </el-button>
-              <el-button :icon="Delete" type="danger" @click="onDel(scope.row)">
-                删除
-              </el-button>
+              <el-button :icon="Delete" type="danger" @click="onDel(scope.row)"> 删除 </el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -351,12 +339,22 @@ const handleSelectionChange = (val: Tag[]) => {
   </el-row>
 
   <!-- 添加标签对话框 -->
-  <el-dialog v-model="dialogVisibleAdd" draggable title="新增标签" width="400px"
-             @closed="resetAddForm">
+  <el-dialog
+    v-model="dialogVisibleAdd"
+    draggable
+    title="新增标签"
+    width="400px"
+    @closed="resetAddForm"
+  >
     <el-form ref="addFormRef" :model="addFormData" :rules="formRules" label-width="80px">
       <el-form-item label="标签名称" prop="name">
-        <el-input v-model="addFormData.name" clearable maxlength="32" placeholder="请输入标签名称"
-                  show-word-limit/>
+        <el-input
+          v-model="addFormData.name"
+          clearable
+          maxlength="32"
+          placeholder="请输入标签名称"
+          show-word-limit
+        />
       </el-form-item>
     </el-form>
     <template #footer>
@@ -379,7 +377,7 @@ const handleSelectionChange = (val: Tag[]) => {
   <el-dialog v-model="dialogVisibleSet" draggable title="Tips" width="500">
     <el-form ref="setFormRef" :model="setFormData" :rules="formRules">
       <el-form-item label="事件名称" label-position="left" prop="name">
-        <el-input v-model="setFormData.name" clearable placeholder="输入事件名称"/>
+        <el-input v-model="setFormData.name" clearable placeholder="输入事件名称" />
       </el-form-item>
     </el-form>
     <template #footer>

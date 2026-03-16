@@ -1,6 +1,6 @@
 import {defineStore} from 'pinia'
 import {computed, ref} from 'vue'
-import type {UserInfo} from '@/apps/appc-auth/types'
+import type {UserInfo} from '@/apps/appc_auth/types'
 
 // 存储键名常量，避免硬编码
 const STORAGE_KEYS = {

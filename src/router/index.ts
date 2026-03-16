@@ -1,5 +1,5 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import {useTokenStore} from '@/apps/appc-auth/stores/token'
+import {useTokenStore} from '@/apps/appc_auth/stores/token'
 
 const routes = [
   {
@@ -15,44 +15,44 @@ const routes = [
       {
         path: '/auth/admin/users',
         name: 'user-admin',
-        component: () => import('@/apps/appc-auth/views/UserAdmin.vue'),
+        component: () => import('@/apps/appc_auth/views/UserAdmin.vue'),
       },
       {
         path: '/auth/admin/roles',
         name: 'role-admin',
-        component: () => import('@/apps/appc-auth/views/RoleAdmin.vue'),
+        component: () => import('@/apps/appc_auth/views/RoleAdmin.vue'),
       },
       {
         path: '/auth/admin/resource',
         name: 'resource-admin',
-        component: () => import('@/apps/appc-auth/views/ResourceAdmin.vue'),
+        component: () => import('@/apps/appc_auth/views/ResourceAdmin.vue'),
       },
       {
         path: '/daily-tracker/time-spend',
         name: 'time-spend',
-        component: () => import('@/apps/appx-tracker/views/TimeSpend.vue'),
+        component: () => import('@/apps/appx_tracker/views/TimeSpend.vue'),
       },
       {
         path: '/daily-tracker/action/data',
         name: 'action-data',
-        component: () => import('@/apps/appx-tracker/views/ActionData.vue'),
+        component: () => import('@/apps/appx_tracker/views/ActionData.vue'),
       },
       {
         path: '/daily-tracker/thing/data',
         name: 'thing-data',
-        component: () => import('@/apps/appx-tracker/views/ThingData.vue'),
+        component: () => import('@/apps/appx_tracker/views/ThingData.vue'),
       },
       {
         path: '/daily-tracker/tag/data',
         name: 'tag-data',
-        component: () => import('@/apps/appx-tracker/views/TagData.vue'),
+        component: () => import('@/apps/appx_tracker/views/TagData.vue'),
       },
     ],
   },
   {
     path: '/login',
     name: 'login',
-    component: () => import('@/apps/appc-auth/views/Login.vue'),
+    component: () => import('@/apps/appc_auth/views/Login.vue'),
   },
   {
     path: '/about',

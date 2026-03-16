@@ -2,8 +2,8 @@ import type {AxiosInstance, AxiosResponse, InternalAxiosRequestConfig} from 'axi
 import axios, {AxiosError} from 'axios'
 import type {HttpRequestConfig, PendingRequest} from './types.ts'
 import type {ApiResponse} from '@/types'
-import type {Token} from '@/apps/appc-auth/types'
-import {useTokenStore} from '@/apps/appc-auth/stores/token.ts'
+import type {Token} from '@/apps/appc_auth/types'
+import {useTokenStore} from '@/apps/appc_auth/stores/token.ts'
 import {ElMessage, ElMessageBox} from 'element-plus'
 import router from '@/router'
 

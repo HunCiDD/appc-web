@@ -1,20 +1,19 @@
-import {httpRequest} from "./index.ts"
-import type {GetTag} from "@/apps/appx-tracker/types.ts";
+import { httpRequest } from './index.ts'
+import type { GetTag } from '@/apps/appx-tracker/types.ts'
 
 export const getTag = async (tagId: string) => {
   console.log('start')
   try {
-    return await httpRequest.get<GetTag>(`/tags/${tagId}`);
+    return await httpRequest.get<GetTag>(`/tags/${tagId}`)
   } catch (error) {
     console.error('获取用户失败')
-    throw error;
+    throw error
   }
 }
 
 export const listTags = async () => {
-  return await httpRequest.get<GetTag[]>('/tags/list');
+  return await httpRequest.get<GetTag[]>('/tags/list')
 }
-
 
 // interface AddTagRequestConfig extends HttpRequestConfig {
 //   method: 'post',

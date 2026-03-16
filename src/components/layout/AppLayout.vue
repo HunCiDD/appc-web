@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import {useTokenStore} from '@/apps/appc-auth/stores/token.ts'
+import {useTokenStore} from '@/apps/appc_auth/stores/token.ts'
 
 import AppAside from './AppAside.vue'
 import AppHeader from './AppHeader.vue'

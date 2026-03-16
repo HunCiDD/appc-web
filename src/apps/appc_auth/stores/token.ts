@@ -1,7 +1,7 @@
 import {defineStore} from 'pinia'
-import type {Token, UserInfo, UserLoginForm} from '@/apps/appc-auth/types'
+import type {Token, UserInfo, UserLoginForm} from '@/apps/appc_auth/types'
 import type {ApiResponse} from '@/types'
-import {tokenRefreshApi, tokenUserInfoApi, userLoginApi} from '@/apps/appc-auth/apis'
+import {tokenRefreshApi, tokenUserInfoApi, userLoginApi} from '@/apps/appc_auth/apis'
 
 export const useTokenStore = defineStore('token', () => {
   // 状态 - 添加storage事件监听确保多标签页同步

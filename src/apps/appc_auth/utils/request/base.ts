@@ -248,7 +248,9 @@ export class AuthInterceptorStrategy implements InterceptorStrategy {
     originalRequest.headers.Authorization = `${tokenType} ${newAccessToken}`
 
     // 增加重试计数
+    // @ts-ignore
     const currentRetryCount = (originalRequest[RETRY_COUNT_KEY] as number) || 0
+    // @ts-ignore
     originalRequest[RETRY_COUNT_KEY] = currentRetryCount + 1
 
     // 使用axios的原始配置重新发送请求

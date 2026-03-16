@@ -27,20 +27,20 @@ const loginType = ref<string>('account')
           <el-tab-pane label="账号登录" name="account">
             <template #label>
               <span class="icon">
-                <el-icon><IEpUser/></el-icon>
+                <el-icon><IEpUser /></el-icon>
                 <span class="ml-2">账号登录</span>
               </span>
             </template>
-            <AccountLoginForm/>
+            <AccountLoginForm />
           </el-tab-pane>
           <el-tab-pane label="手机登录" name="phone">
             <template #label>
               <span class="icon">
-                <el-icon><IEpPhone/></el-icon>
+                <el-icon><IEpPhone /></el-icon>
                 <span class="ml-2">手机登录</span>
               </span>
             </template>
-            <PhoneLoginForm/>
+            <PhoneLoginForm />
           </el-tab-pane>
         </el-tabs>
       </div>

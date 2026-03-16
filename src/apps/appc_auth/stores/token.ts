@@ -1,7 +1,7 @@
-import {defineStore} from 'pinia'
-import type {Token, UserInfo, UserLoginForm} from '@/apps/appc_auth/types'
-import type {ApiResponse} from '@/types'
-import {tokenRefreshApi, tokenUserInfoApi, userLoginApi} from '@/apps/appc_auth/apis'
+import { defineStore } from 'pinia'
+import type { Token, UserInfo, UserLoginForm } from '@/apps/appc-auth/types'
+import type { ApiResponse } from '@/types'
+import { tokenRefreshApi, tokenUserInfoApi, userLoginApi } from '@/apps/appc-auth/apis'
 
 export const useTokenStore = defineStore('token', () => {
   // 状态 - 添加storage事件监听确保多标签页同步
@@ -33,7 +33,7 @@ export const useTokenStore = defineStore('token', () => {
         throw new Error('登录请求失败')
       }
 
-      const {access_token, refresh_token, token_type} = response.data as Token
+      const { access_token, refresh_token, token_type } = response.data as Token
       setTokens(access_token, refresh_token, token_type)
       return response
     } catch (error) {
@@ -58,7 +58,7 @@ export const useTokenStore = defineStore('token', () => {
         throw new Error('令牌刷新失败')
       }
 
-      const {access_token, refresh_token, token_type} = response.data as Token
+      const { access_token, refresh_token, token_type } = response.data as Token
       setTokens(access_token, refresh_token, token_type)
     } catch (error) {
       clearTokens() // 刷新失败时清除所有令牌
@@ -79,11 +79,7 @@ export const useTokenStore = defineStore('token', () => {
     return response
   }
 
-  const setTokens = (
-    newAccessToken: string,
-    newRefreshToken?: string,
-    newTokenType?: string
-  ) => {
+  const setTokens = (newAccessToken: string, newRefreshToken?: string, newTokenType?: string) => {
     accessToken.value = newAccessToken
     refreshToken.value = newRefreshToken || null
     tokenType.value = newTokenType || 'Bearer'

@@ -47,12 +47,12 @@ export const useInvestmentStore = defineStore('investment', () => {
         page: params?.page || pagination.value.page,
         size: params?.size || pagination.value.size,
       })
-      backtestTasks.value = response.items
+      backtestTasks.value = response.data.items
       pagination.value = {
-        page: response.page,
-        size: response.size,
-        total: response.total,
-        pages: response.pages,
+        page: response.data.page,
+        size: response.data.size,
+        total: response.data.total,
+        pages: response.data.pages,
       }
     } finally {
       isLoadingTasks.value = false
@@ -66,8 +66,8 @@ export const useInvestmentStore = defineStore('investment', () => {
         backtestApi.getTask(taskId),
         backtestApi.getReport(taskId),
       ])
-      currentTask.value = task
-      currentReport.value = report
+      currentTask.value = task.data
+      currentReport.value = report.data
     } finally {
       isLoadingReport.value = false
     }
@@ -77,7 +77,7 @@ export const useInvestmentStore = defineStore('investment', () => {
     isLoadingTrades.value = true
     try {
       const response = await backtestApi.getTradeRecords(taskId, { page })
-      tradeRecords.value = response.items
+      tradeRecords.value = response.data.items
     } finally {
       isLoadingTrades.value = false
     }
@@ -91,8 +91,8 @@ export const useInvestmentStore = defineStore('investment', () => {
   }) => {
     isLoadingKline.value = true
     try {
-      const data = await backtestApi.getKLineData(params)
-      klineData.value = data
+      const response = await backtestApi.getKLineData(params)
+      klineData.value = response.data
     } finally {
       isLoadingKline.value = false
     }

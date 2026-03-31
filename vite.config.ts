@@ -19,7 +19,9 @@ export default defineConfig({
     vue(),
     vueJsx(),
     vueDevTools(),
-    tailwindcss(),
+    tailwindcss({
+      content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+    }),
     AutoImport({
       imports: ['vue', 'vue-router'],
       resolvers: [

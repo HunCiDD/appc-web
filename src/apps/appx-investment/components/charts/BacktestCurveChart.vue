@@ -147,7 +147,7 @@ const updateChart = () => {
       {
         type: 'time',
         gridIndex: 0,
-        boundaryGap: false,
+        boundaryGap: [0, '0%'],
         axisLine: { onZero: false },
         splitLine: { show: false },
         axisLabel: {
@@ -159,7 +159,7 @@ const updateChart = () => {
       {
         type: 'time',
         gridIndex: 1,
-        boundaryGap: false,
+        boundaryGap: [0, '0%'],
         axisLine: { onZero: false },
         axisTick: { show: false },
         splitLine: { show: false },
@@ -330,6 +330,8 @@ watch(() => [props.equityData, props.benchmarkData], () => {
 </script>
 
 <style scoped>
+@reference "tailwindcss";
+
 .backtest-curve-chart {
   @apply border rounded-lg p-4 bg-white;
 }

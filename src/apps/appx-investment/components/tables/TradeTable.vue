@@ -210,6 +210,8 @@ const handleCurrentChange = (page: number) => {
 </script>
 
 <style scoped>
+@reference "tailwindcss";
+
 .trade-table {
   @apply border rounded-lg p-4 bg-white;
 }

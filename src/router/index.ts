@@ -53,6 +53,25 @@ const routes = [
     component: () => import('@/views/Test.vue'),
   },
   {
+    path: '/investment',
+    name: 'investment',
+    component: () => import('@/apps/appx-investment/components/layout/InvestmentLayout.vue'),
+    meta: { requiresAuth: false },
+    children: [
+      {
+        path: 'backtest/tasks',
+        name: 'BacktestTaskList',
+        component: () => import('@/apps/appx-investment/views/BacktestTaskListView.vue'),
+      },
+      {
+        path: 'backtest/report/:taskId',
+        name: 'BacktestReport',
+        component: () => import('@/apps/appx-investment/views/BacktestReportView.vue'),
+        props: true,
+      },
+    ],
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: () => import('@/views/NotFound.vue'),

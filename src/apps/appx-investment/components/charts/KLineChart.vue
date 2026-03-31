@@ -116,13 +116,13 @@ const updateChart = () => {
       {
         type: 'category',
         data: props.data.map(item => item.timestamp),
-        boundaryGap: false,
+        boundaryGap: [0, '0%'],
         axisLine: { onZero: false },
         splitLine: { show: false },
         min: 'dataMin',
         max: 'dataMax',
         axisLabel: {
-          formatter: (value: number) => {
+          formatter: (value: any) => {
             return new Date(value).toLocaleDateString()
           },
         },
@@ -131,7 +131,7 @@ const updateChart = () => {
         type: 'category',
         gridIndex: 1,
         data: props.data.map(item => item.timestamp),
-        boundaryGap: false,
+        boundaryGap: [0, '0%'],
         axisLine: { onZero: false },
         axisTick: { show: false },
         splitLine: { show: false },
@@ -240,6 +240,8 @@ watch(() => props.data, () => {
 </script>
 
 <style scoped>
+@reference "tailwindcss";
+
 .kline-chart {
   @apply border rounded-lg p-4 bg-white;
 }
